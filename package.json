@@ -1,0 +1,40 @@
+{
+  "name": "timetable.js",
+  "version": "0.8.3",
+  "description": "Vanilla javascript plugin for building nice responsive timetables",
+  "keywords": [
+    "timetable",
+    "responsive",
+    "schedule",
+    "agenda",
+    "events"
+  ],
+  "scripts": {
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Grible/timetable.js"
+  },
+  "private": false,
+  "devDependencies": {
+    "browser-sync": "^2.26.7",
+    "browser-sync-webpack-plugin": "^2.0.1",
+    "cross-env": "^6.0.3",
+    "laravel-mix": "^5.0.0",
+    "resolve-url-loader": "^3.1.0",
+    "sass": "^1.23.0",
+    "sass-loader": "^8.0.0",
+    "ts-loader": "^6.2.0",
+    "typescript": "^3.6.3",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "dependencies": {
+    "sync-scroll": "^1.0.3"
+  }
+}
