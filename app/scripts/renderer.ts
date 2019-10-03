@@ -102,10 +102,6 @@ export class Renderer {
   appendLocationEvents(location: string, node: HTMLLIElement) {
     this.timetable.events
       .filter(event => event.location === location)
-      .forEach(event => this.appendEvent(event, node));
-  }
-
-  appendEvent(event: TimetableEvent, node: HTMLLIElement) {
-    this.eventRenderer.renderEvent(event, node);
+      .forEach(event => this.eventRenderer.renderEvent(event, node));
   }
 }

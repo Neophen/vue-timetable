@@ -11,7 +11,7 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.ts('./app/scripts/plugin.js', 'dist/scripts/timetable.js').sass('./app/styles/plugin.scss', 'dist/styles/timetablejs.css');
+mix.ts('./app/scripts/plugin.ts', 'dist/scripts/timetable.js').sass('./app/styles/plugin.scss', 'dist/styles/timetablejs.css').sass('./app/styles/demo.scss', 'dist/styles/demo.css');
 
 mix.browserSync('dist.test');
 // Full API

@@ -10,10 +10,14 @@
     <title>Timetable.js demo</title>
     <link rel="stylesheet" href="styles/timetablejs.css" />
     <link rel="stylesheet" href="styles/demo.css" />
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
   </head>
-  <body>
+  <body id="body">
     <div class="hero-unit">
-      <h1>Timetable.js demo</h1>
+      <h1 class="text-6xl">Timetable.js demo</h1>
       <p>
         Vanilla javascript plugin for building nice responsive timetables. More
         info on
@@ -23,8 +27,10 @@
       </p>
     </div>
 
-    <div class="timetable"></div>
+    <div id="timetable" class="timetable"></div>
 
+    <script src="https://unpkg.com/popper.js"></script>
+    <script src="https://unpkg.com/tooltip.js"></script>
     <script src="scripts/timetable.js"></script>
 
     <script>
@@ -42,69 +48,75 @@
         "Tokyo"
       ]);
 
+      const node = document.createElement("a");
+      node.innerText = "hello from element";
+      node.className = "item";
+      node.href = "#";
+      node.target = "_blank";
+
       const events = [
         {
           name: "Sightseeing",
           location: "Rotterdam",
           startDate: new Date(2015, 7, 17, 9, 0),
           endDate: new Date(2015, 7, 17, 11, 30),
-          options: { url: "#" }
+          html: node
         },
         {
           name: "Zumba",
           location: "Madrid",
           startDate: new Date(2015, 7, 17, 12),
           endDate: new Date(2015, 7, 17, 13),
-          options: { url: "#" }
+          html: `<a id="zumba" href="#" class="item">Zumba</a>`
         },
         {
           name: "Zumbu",
           location: "Madrid",
           startDate: new Date(2015, 7, 17, 13, 30),
           endDate: new Date(2015, 7, 17, 15),
-          options: { url: "#" }
+          html: `<a id="zoombu" href="#" class="item" >Zumbu</a>`
         },
         {
           name: "Cocktails",
           location: "Rotterdam",
           startDate: new Date(2015, 7, 18, 0, 0),
           endDate: new Date(2015, 7, 18, 2, 0),
-          options: { class: "vip-only" }
+          html: `<a href="#" class="vip-only item" >Cocktails</a>`
         },
         {
           name: "Lasergaming",
           location: "London",
           startDate: new Date(2015, 7, 17, 17, 45),
           endDate: new Date(2015, 7, 17, 19, 30),
-          options: {
-            class: "vip-only",
-            data: { maxPlayers: 14, gameType: "Capture the flag" }
-          }
+          html: `<a href="#" data-maxPlayers="14" data-gameType="Capture the flag" class="vip-only item" >Lasergaming</a>`
         },
         {
           name: "All-you-can-eat grill",
           location: "New York",
           startDate: new Date(2015, 7, 17, 21),
           endDate: new Date(2015, 7, 18, 1, 30),
-          options: { url: "#" }
+          html: `<a href="#" class="item" >All-you-can-eat grill</a>`
         },
         {
           name: "Hackathon",
           location: "Tokyo",
           startDate: new Date(2015, 7, 17, 11, 30),
-          endDate: new Date(2015, 7, 17, 20)
+          endDate: new Date(2015, 7, 17, 20),
+          html: `<span class="item" >Hackathon</span>`
         },
         {
           name: "Tokyo Hackathon Livestream",
           location: "Los Angeles",
           startDate: new Date(2015, 7, 17, 12, 30),
-          endDate: new Date(2015, 7, 17, 16, 15)
+          endDate: new Date(2015, 7, 17, 16, 15),
+          html: `<span class="item" >Tokyo Hackathon Livestream</span>`
         },
         {
           name: "Lunch",
           location: "Jakarta",
           startDate: new Date(2015, 7, 17, 9, 30),
           endDate: new Date(2015, 7, 17, 11, 45),
+          html: `<span onclick="onClick" class="item" >Tokyo Hackathon Livestream</span>`,
           options: {
             onClick: function(event) {
               window.alert(
@@ -120,9 +132,39 @@
       ];
 
       events.forEach(event => timetable.addEvent(event));
-
-      // var renderer = new Timetable.renderer();
       timetable.renderer.draw(".timetable");
+
+      const tooltipTemplate = `
+            <div class="tooltip hidden sm:flex relative" role="tooltip">
+              <div class="flex items-center">
+              <div class="tooltip-arrow" x-arrow=""></div>
+              </div>
+              <div class="tooltip-inner text-sm text-white bg-black p-6"></div>
+            </div>
+            `;
+
+      new Tooltip(document.getElementById("zoombu"), {
+        placement: "right",
+        title: "Something trully amazing",
+        container: document.getElementById("body"),
+        boundariesElement: document.getElementById("body"),
+        template: tooltipTemplate
+      });
+      new Tooltip(document.getElementById("zumba"), {
+        placement: "right",
+        title: "Something fpr zumba amazing",
+        container: document.getElementById("body"),
+        boundariesElement: document.getElementById("body"),
+        template: tooltipTemplate
+      });
+
+      new Tooltip(node, {
+        placement: "right",
+        title: "Something completely different",
+        container: document.getElementById("body"),
+        boundariesElement: document.getElementById("body"),
+        template: tooltipTemplate
+      });
     </script>
   </body>
 </html>

@@ -1,4 +1,5 @@
 {
     "/dist/scripts/timetable.js": "/dist/scripts/timetable.js",
-    "/dist/styles/timetablejs.css": "/dist/styles/timetablejs.css"
+    "/dist/styles/timetablejs.css": "/dist/styles/timetablejs.css",
+    "/dist/styles/demo.css": "/dist/styles/demo.css"
 }

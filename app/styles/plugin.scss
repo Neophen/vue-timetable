@@ -198,32 +198,20 @@ $timetable-background-color: white !default;
       // }
       &:after {
         // background-image: linear-gradient(to right, $timetable-grid-color, $timetable-grid-color 1px, $timetable-row-even-color 1px, $timetable-row-even-color 2px, $timetable-grid-color 2px, $timetable-grid-color 3px, transparent 3px, transparent);
+        // background-position: (-2px) 0;
         background-image: linear-gradient(to right, $timetable-grid-color, $timetable-grid-color 1px, transparent 1px, transparent);
         background-size: $timetable-hour-column-width auto;
-        // background-position: (-2px) 0;
         background-position: 0;
       }
     }
   }
   .time-entry {
-    background-color: $timetable-entry-bg;
-    transition: 200ms background-color;
     height: $timetable-hour-row-height - 1px;
     display: block;
     position: absolute;
     z-index: 2;
-    padding: 0 $timetable-entry-padding;
     white-space: normal;
     overflow: hidden;
-    color: $timetable-entry-color;
-    border: $timetable-entry-border;
     @include valign-parent;
-    small {
-      @include valign-middle;
-      display: block;
-    }
-    &:hover {
-      // background-color: $timetable-entry-color-hover;
-    }
   }
 }

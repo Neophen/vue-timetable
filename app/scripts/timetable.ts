@@ -6,22 +6,7 @@ export interface TimetableEvent {
 	location: string;
 	startDate: Date;
 	endDate: Date;
-	info?: string;
-	infoSmall?: string;
-	options?: {
-		url?: string;
-		class?: string;
-		data?: {
-			[key:string]: unknown;
-		};
-		onClick?: Function;
-	}
-	iconUrl?: string;
-	extraEvent?: {
-		name: string;
-		url: string;
-		iconUrl: string;
-	}
+	html: string | HTMLElement;
 }
 
 
